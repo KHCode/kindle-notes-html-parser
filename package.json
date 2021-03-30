@@ -1,24 +1,7 @@
 {
   "name": "kindle-notes-html-parser",
-  "version": "1.0.0",
-  "description": "An app for parsing Kindle notes and highlights that have been exported as an HTML file",
-  "main": "app.js",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KHCode/kindle-notes-html-parser.git"
-  },
-  "author": "Kris Hill",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KHCode/kindle-notes-html-parser/issues"
-  },
-  "homepage": "https://github.com/KHCode/kindle-notes-html-parser#readme",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -26,10 +9,13 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1",
-    "express": "^4.17.1",
-    "node-html-parser": "^3.1.2",
-    "react-to-print": "^2.12.3"
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
