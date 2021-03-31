@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+// import { Request } from 'react-axios';
+import axios from 'axios';
 import './App.css';
+// import htmlParser from 'html-react-parser';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [ file, setFile ] = useState("");
+
+  const handleUpload = (event) => {
+    setFile(event.target.files[0]);
+  }
+
+  const handleSubmit = () => {
+    console.log(file);
+    // const formData = new FormData();
+    // formData.append('file', file)
+    axios.post('http://localhost:8080/send-file', file)
+      .then(res => console.log(res))
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form action="/send-file" method="post" encType="multipart/form-data">
+        <input type="file" name="kindle-notes" onChange={handleUpload} />
+        <input type="submit" onClick={handleSubmit} />
+      </form>
     </div>
   );
 }
