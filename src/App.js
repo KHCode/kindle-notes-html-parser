@@ -21,9 +21,9 @@ function App() {
 
   return (
     <div className="App">
-      <form action="/send-file" method="post" encType="multipart/form-data">
+      <form action="" method="post" encType="multipart/form-data">
         <input type="file" name="kindle-notes" onChange={handleUpload} />
-        <input type="submit" onClick={handleSubmit} />
+        <input type="submit"  formAction="http://localhost:8080/send-file" onClick={handleSubmit} />
       </form>
     </div>
   );
