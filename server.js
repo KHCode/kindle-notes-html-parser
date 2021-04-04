@@ -3,14 +3,15 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 const docx = require('docx');
-const fs = require('fs');
+const { Paragraph } = require('docx');
+// const fs = require('fs');
 const multer  = require('multer')
 const storage = multer.memoryStorage();
 const upload = multer({ dest: 'uploads/', storage: storage });
 // const fetch = require('node-fetch');
 // const htmlParser = require('node-html-parser')
 const jsdom = require('jsdom');
-const { Paragraph } = require('docx');
+const { default: Notes } = require('./src/Notes');
 const { JSDOM } = jsdom;
 const port = process.env.PORT || 8080;
 
@@ -31,16 +32,22 @@ app.post('/send-file', upload.single('kindle-notes'), (req, res) => {
   const buf = Buffer.from(req.file.buffer, 'utf8');  
 //   console.log(buf.toString());
   const doc = (new JSDOM(buf.toString())).window.document;
+  const title = doc.querySelector('.bookTitle');
+  const author = doc.querySelector('.authors');
+  const DocNotes = new Notes(title, author);
 
   res.locals.notesArray = Array.from(doc.querySelectorAll('<div>')).filter(node => {
       return node.className === 'noteHeading' || node.className === 'noteText';
-  }).map(el => {
-      if(el.className === 'noteHeading'){
+  }).forEach(el => {
+      if(el.className === 'noteHeading') {
         const removeSpan = el.querySelector('<span>');
         if(removeSpan) el.removeChild(removeSpan);
-        
       }
-      return 
+
+      if(el.classname === 'noteHeading') {
+
+      }
+       
   })
 
 

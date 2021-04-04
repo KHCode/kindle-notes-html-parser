@@ -2,7 +2,7 @@
 import axios from 'axios';
 import './App.css';
 // import htmlParser from 'html-react-parser';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function App() {
   const [ file, setFile ] = useState("");
