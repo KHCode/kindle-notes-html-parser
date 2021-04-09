@@ -11,7 +11,7 @@ const upload = multer({ dest: 'uploads/', storage: storage });
 // const fetch = require('node-fetch');
 // const htmlParser = require('node-html-parser')
 const jsdom = require('jsdom');
-const { default: Notes } = require('./src/Notes');
+const Notes = require('./src/Notes');
 const { JSDOM } = jsdom;
 const port = process.env.PORT || 8080;
 
@@ -28,7 +28,7 @@ app.get('/*', function (req, res) {
 });
 
 app.post('/send-file', upload.single('kindle-notes'), (req, res) => {
-  console.log(req.file);
+  console.log(`server.js, line 31: ${req.file}`);
   const buf = Buffer.from(req.file.buffer, 'utf8');  
 //   console.log(buf.toString());
   const doc = (new JSDOM(buf.toString())).window.document;
@@ -36,11 +36,11 @@ app.post('/send-file', upload.single('kindle-notes'), (req, res) => {
   const author = doc.querySelector('.authors');
   const DocNotes = new Notes(title, author);
 
-  res.locals.notesArray = Array.from(doc.querySelectorAll('<div>')).filter(node => {
+  res.locals.notesArray = Array.from(doc.querySelectorAll('div')).filter(node => {
       return node.className === 'noteHeading' || node.className === 'noteText';
   }).forEach(el => {
       if(el.className === 'noteHeading') {
-        const removeSpan = el.querySelector('<span>');
+        const removeSpan = el.querySelector('span');
         if(removeSpan) el.removeChild(removeSpan);
       }
 

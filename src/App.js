@@ -12,11 +12,11 @@ function App() {
   }
 
   const handleSubmit = () => {
-    console.log(file);
+    console.log(`App.js, line 15: ${file}`);
     // const formData = new FormData();
     // formData.append('file', file)
     axios.post('http://localhost:8080/send-file', file)
-      .then(res => console.log(res))
+      .then(res => console.log(`App.js, line 19: ${res}`))
   }
 
   return (

@@ -1,4 +1,4 @@
-const Notes = class {
+module.exports = class Notes{
     title;
     author;
     notesList = [];
@@ -6,6 +6,5 @@ const Notes = class {
         this.title = title;
         this.author = author;
     }
-}
+};
 
-export default Notes;
