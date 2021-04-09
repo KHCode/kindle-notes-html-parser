@@ -11,7 +11,7 @@ const upload = multer({ dest: 'uploads/', storage: storage });
 // const fetch = require('node-fetch');
 // const htmlParser = require('node-html-parser')
 const jsdom = require('jsdom');
-const { default: Notes } = require('./src/Notes');
+const { default: Notes } = require('./utils/Notes');
 const { JSDOM } = jsdom;
 const port = process.env.PORT || 8080;
 
