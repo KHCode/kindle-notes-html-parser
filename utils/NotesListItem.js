@@ -1,16 +1,22 @@
-const NotesListItem = class {
-    isHighlight;
+export default class NotesListItem {
+    nodeType;
     textContent;
-    constructor( isHighlight, textContent ) {
-        this.isHighlight = isHighlight;
+    constructor( nodeType, textContent ) {
+        this.nodeType = nodeType;
         this.textContent = textContent;
     }
 }
 
-const HighlightItem = class extends NotesListItem {
-    isHighlight=true;
+export class HighlightItem extends NotesListItem {
     constructor( textContent ) {
+        super(textContent);
+        this.nodeType = "Highlight";
+    }
+}
 
-        super(isHighlight, textContent);
+export class NoteItem extends NotesListItem {
+    constructor( textContent ) {
+        super(textContent);
+        this.nodeType = "Note";
     }
 }

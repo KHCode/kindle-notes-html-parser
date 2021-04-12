@@ -1,9 +1,12 @@
-module.exports = class Notes{
+export default class Notes{
     title;
-    author;
+    authors = [];
+    citation;
+    highlightsList = [];
     notesList = [];
-    constructor(title, author) {
+    constructor(title, authors, citation) {
         this.title = title;
-        this.author = author;
+        this.authors = authors;
+        this.citation = citation;
     }
 }
